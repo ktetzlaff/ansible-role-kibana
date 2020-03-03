@@ -9,3 +9,8 @@
     src: kibana.repo.j2
     dest: /etc/yum.repos.d/kibana.repo
     mode: 0644
+
+- name: Install Kibana.
+  package:
+    name: 'kibana{% if es_version is defined and es_version != ""  %}-{{ es_version }}{% endif %}'
+    state: present
